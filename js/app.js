@@ -7,6 +7,8 @@ class Enemy {
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images    
         this.sprite = "images/enemy-bug.png";
+
+        //enemy parameters
         this.x = x;
         this.y = y;
         this.enemySpeed = enemySpeed;
@@ -20,8 +22,6 @@ class Enemy {
 
     // The update method for the Enemy 
     // Updates the Enemy location (you need to implement)
-
-    // reset enemy's speed at new run
     enemyRebirth() {
         if (this.x >= 505) {
 
@@ -42,7 +42,7 @@ class Enemy {
 
                 function collisionConsequenses() {
                     player.x = 200;
-                    player.y = 400;
+                    player.y = 655;
                 }
 
                 collisionConsequenses();
@@ -77,6 +77,7 @@ class Enemy {
 // a handleInput() method.
 class Player {
     constructor(x, y) {
+        //player coords
         this.x = x;
         this.y = y;
         this.sprite = "images/char-boy.png";
@@ -95,7 +96,7 @@ class Player {
 
 
     // handlerInput (minX, minY, maxX, maxY are border limits)
-    handleInput(allowedKeys, minX = -10, maxX = 500, minY = -15, maxY = 450) {
+    handleInput(allowedKeys, minX = -10, maxX = 500, minY = -15, maxY = 700) {
         // Left key should move the player to the left, right key to the right, up should move the player up and down should move the player down
 
         // Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).
@@ -106,7 +107,7 @@ class Player {
             waterlineY = 83;
         if (allowedKeys === "up") {
             (minY <= this.y - moveY) ?
-            ((this.y > waterlineY) ? this.y -= moveY : this.y = 400) : this.y;
+            ((this.y > waterlineY) ? this.y -= moveY : this.playerWins()) : this.y;
         } else if (allowedKeys === "down") {
             (this.y + moveY <= maxY) ? this.y += moveY: this.y;
         } else if (allowedKeys === "left") {
@@ -114,6 +115,13 @@ class Player {
         } else if (allowedKeys === "right") {
             ((this.x + moveX) <= maxX) ? this.x += moveX: this.x;
         }
+    }
+    
+    playerWins() {
+        this.y = 655;
+        this.x = 200;
+        //win counter
+        //smth happens (pop-up)
     }
 
     update(dt) {
@@ -128,12 +136,15 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const player = new Player(200, 400),
+const player = new Player(200, 655),
     enemy1 = new Enemy(-100, 60, 50),
     enemy2 = new Enemy(-100, 145, 150),
     enemy3 = new Enemy(-100, 230, 250),
-    enemy4 = new Enemy(-100, 310, 100),
-    allEnemies = [enemy1, enemy2, enemy3, enemy4];
+    enemy4 = new Enemy(-100, 310, 450),
+    enemy5 = new Enemy(-100, 395, 100),
+    enemy6 = new Enemy(-100, 475, 150),
+    enemy7 = new Enemy(-100, 560, 450),
+    allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7];
 
 
 // This listens for key presses and sends the keys to your
