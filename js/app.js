@@ -35,17 +35,14 @@ class Enemy {
     collisionCheck() {
         if ((this.collisionBottom >= player.collisionTop) && (this.collisionTop <= player.collisionBottom)) {
             if ((this.collisionRight > player.collisionLeft) && (this.collisionLeft < player.collisionRight)) {
-                console.log(`collision happened! 
-                Enemy at ${this.collisionBottom}, ${this.collisionTop}, ${this.collisionLeft}, ${this.collisionRight} 
-                and 
-                Player at ${player.collisionBottom}, ${player.collisionTop}, ${player.collisionLeft}, ${player.collisionRight}`);
+                // console.log(`collision happened! 
+                // Enemy at ${this.collisionBottom}, ${this.collisionTop}, ${this.collisionLeft}, ${this.collisionRight} 
+                // and 
+                // Player at ${player.collisionBottom}, ${player.collisionTop}, ${player.collisionLeft}, ${player.collisionRight}`);
 
-                function collisionConsequenses() {
-                    player.x = 200;
-                    player.y = 655;
-                }
-
-                collisionConsequenses();
+                //player goes to the default position
+                player.x = 200;
+                player.y = 655;
             }
         }
     }
@@ -68,9 +65,6 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
-
-
-
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -116,12 +110,25 @@ class Player {
             ((this.x + moveX) <= maxX) ? this.x += moveX: this.x;
         }
     }
-    
+
     playerWins() {
+        //player goes to default position
         this.y = 655;
         this.x = 200;
-        //win counter
-        //smth happens (pop-up)
+        this.sprite = "images/rock-rip.png";
+
+        function endingPopUp() {
+            const x = document.querySelector(".pop-up");
+            x.style.display = "block";
+            document.removeEventListener("keyup", keyListeningFunction);
+            const restartButton = document.querySelector(".pop-up__button");
+            restartButton.addEventListener("click", function() {
+                x.style.display = "none";
+                document.addEventListener('keyup', keyListeningFunction);
+                player.sprite = "images/char-boy.png";
+            });
+        };
+        endingPopUp();
     }
 
     update(dt) {
@@ -149,7 +156,7 @@ const player = new Player(200, 655),
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function (e) {
+let keyListeningFunction = function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -158,4 +165,5 @@ document.addEventListener('keyup', function (e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-});
+}
+document.addEventListener('keyup', keyListeningFunction);
