@@ -5,11 +5,11 @@ body {
 .pop-up {
     display: none;
     position: absolute;
-    top: 25%;
+    top: 15%;
     left: 25%;
     right: 25%;    
     height: 250px;
-    background: green;
+    background: #000000;
     color: #ffffff;
     opacity: 0.9;
     padding: 30px;
