@@ -127,7 +127,7 @@ class Player {
                 document.addEventListener('keyup', keyListeningFunction);
                 player.sprite = "images/char-boy.png";
             });
-        };
+        }
         endingPopUp();
     }
 
@@ -165,5 +165,5 @@ let keyListeningFunction = function (e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-}
+};
 document.addEventListener('keyup', keyListeningFunction);

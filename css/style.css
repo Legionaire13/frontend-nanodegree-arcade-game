@@ -18,7 +18,9 @@ body {
     font-family: Roboto;
     font-size: 4rem;
 
-    box-shadow: 0 10px 100px 0 rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 10px 100px 0 rgba(0, 0, 0, 0.5);
+
+            box-shadow: 0 10px 100px 0 rgba(0, 0, 0, 0.5);
 }
 
 .pop-up__button{
