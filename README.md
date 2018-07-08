@@ -14,7 +14,7 @@ https://legionaire13.github.io/frontend-nanodegree-arcade-game/
 (or just simple clone the repository and run index.html file in any modern browser you like)
 
 ### 2. How to play the game.
-Using your keyboard arrows "up", "down", "right" and "left" help the boy to reach the water. Unfortunatelly his route is full of bugs running across the boy's way. When the boy reachs it you win the game and see what happens.
+Using your keyboard arrows "up", "down", "right" and "left" help the boy to reach the water. Unfortunatelly his route is full of bugs running across the boy's way. When the boy reaches it you win the game and see what happens.
 
 ### 3. Required dependencies.
 You'll need a keyboard to play.
